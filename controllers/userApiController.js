@@ -10,7 +10,11 @@ export const loginUser = credentialFactory.login;
 export const signupUser = credentialFactory.signup;
 
 // CRUD Operations
-export const getUserById = factory(User).getOne;
+export const getUserById = factory(User).getOne({
+  path: "feedbackAndAIResponse", // Field to populate (virtual or actual)
+  select: "feedback advice createdAt", // Fields to include
+  options: { sort: { createdAt: -1 } }, // Sort feedback by newest
+});
 export const updateUser = factory(User).updateOne;
 export const getRoot = (req, res, next) => {
   res.status(200).json({

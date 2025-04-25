@@ -11,12 +11,18 @@ const factory = (Model) => ({
   }),
 
   // Get One
-  getOne: asyncWrapper(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id);
+  getOne: (populateOptions) =>
+    asyncWrapper(async (req, res, next) => {
+      let query = Model.findById(req.params.id);
 
-    if (!doc) return next(new AppError("Document not found", 404));
-    res.status(200).json({ status: "success", data: { doc } });
-  }),
+      // Add population if options provided
+      if (populateOptions) query = query.populate(populateOptions);
+
+      const doc = await query;
+
+      if (!doc) return next(new AppError("Document not found", 404));
+      res.status(200).json({ status: "success", data: { doc } });
+    }),
 
   // Get All
   getAll: asyncWrapper(async (req, res, next) => {
