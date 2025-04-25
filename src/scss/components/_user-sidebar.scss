@@ -1,0 +1,48 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.user-sidebar {
+  background-color: variables.$background-light;
+  width: 300px;
+  padding: 1.5rem;
+  border: 1px solid variables.$border-light;
+  @include mixins.rounded(8px);
+
+  h2 {
+    font-size: 1.6rem;
+    color: variables.$text-dark;
+    margin-bottom: 1.2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 0.8rem;
+
+      a {
+        color: variables.$hover-blue;
+        text-decoration: none;
+
+        &:hover {
+          color: variables.$text-dark;
+        }
+      }
+    }
+  }
+
+  .notifications {
+    h3 {
+      font-size: 1.3rem;
+      color: variables.$primary-light-blue;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: variables.$text-dark;
+      line-height: 1.5;
+    }
+  }
+}

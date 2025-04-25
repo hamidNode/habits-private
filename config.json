@@ -1,0 +1,9 @@
+{
+  "models": {
+    "emotion_analysis": "bhadresh-savani/distilbert-base-uncased-emotion",
+    "response_generation": "facebook/bart-large-cnn",
+    "qa_model": "t5-small",
+    "sentiment_analysis": "siebert/sentiment-roberta-large-english",
+    "health_analysis": "cardiffnlp/twitter-roberta-base-sentiment"
+  }
+}

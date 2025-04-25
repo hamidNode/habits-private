@@ -1,16 +1,29 @@
 //
-const express = require("express");
+import express from "express";
+
+import apiUserRoutes from "./routes/apiUserRoutes.js";
+import errorHandler from "./utils/errorHandler.js";
+import AppError from "./utils/AppError.js";
+import redirectMW from "./middleware/redirectMW.js";
 
 const app = express();
-const habitRoutes = require("./routes/habit");
-const exerciseRoutes = require("./routes/exercises");
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  // console.log("sssss");
+app.use(express.static("public"));
 
-  next();
+app.use("/api/v1/users", apiUserRoutes);
+
+app.use("/", redirectMW("/api/v1/users"));
+
+// Handle unhandled routes
+app.all(/^.*$/, (req, res, next) => {
+  return next(
+    new AppError(`Can't find ${req.originalUrl} on this server!`, 404)
+  );
 });
-app.use("/api/v1/habits", habitRoutes);
-app.use("/api/v1/exercise", exerciseRoutes);
 
-module.exports = app;
+// Error-handling middleware
+app.use(errorHandler);
+
+export default app;

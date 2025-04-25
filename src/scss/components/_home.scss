@@ -1,0 +1,45 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.home {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-content: center;
+  height: 75vh; // Fixed height for the container
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5rem; // Increased gap between buttons
+
+    .btn {
+      padding: 0.75rem 2rem; // Adjust padding for a more prominent button
+      font-size: 1.2rem; // Improve readability
+      @include mixins.box-shadow(
+        0,
+        4px,
+        6px,
+        rgba(0, 0, 0, 0.1)
+      ); // Add subtle depth
+    }
+  }
+
+  .features {
+    margin-top: 3rem; // Adjust spacing above features section
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin: 1rem 0; // Increased spacing between items
+        line-height: 1.5; // Better readability for list items
+        color: variables.$text-dark;
+      }
+    }
+  }
+}

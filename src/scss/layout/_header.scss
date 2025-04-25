@@ -1,0 +1,62 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.layout__header {
+  background-color: variables.$primary-light-blue;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+
+  @include mixins.flex-between; // Using mixins namespace
+  @include mixins.box-shadow(
+    0px,
+    4px,
+    8px,
+    rgba(0, 0, 0, 0.1)
+  ); // Correct usage
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: variables.$secondary-white;
+
+    img {
+      width: 64px;
+      height: 64px;
+      @include mixins.rounded(
+        50%
+      ); // Circular logo with rounded mixin
+    }
+  }
+
+  &__nav {
+    gap: 1rem;
+    flex-direction: column;
+    @include mixins.flex-center;
+  }
+
+  &__list {
+    list-style: none;
+    gap: 1rem;
+    display: flex;
+
+    @include mixins.respond(small) {
+      flex-direction: column; // Responsive layout for small screens
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: variables.$secondary-dark-grey;
+    font-weight: bold;
+
+    @include mixins.transition(
+      color
+    ); // Smooth transition for color change
+
+    &:hover {
+      color: variables.$primary-deep-blue;
+    }
+  }
+}

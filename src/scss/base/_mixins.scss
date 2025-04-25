@@ -1,0 +1,46 @@
+@use "variables";
+
+// Mixin for Media Queries
+@mixin respond($breakpoint) {
+  @if $breakpoint == small {
+    @media (max-width: 768px) {
+      @content; // Insert styles here when called
+    }
+  } @else if $breakpoint == large {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+// Mixin for Flex Centering
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Mixin for Box Shadows
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+}
+
+// Mixin for Rounded Corners
+@mixin rounded($radius: 8px) {
+  border-radius: $radius;
+}
+
+// Mixin for Transition Effects
+@mixin transition(
+  $property: all,
+  $duration: 0.3s,
+  $timing-function: ease
+) {
+  transition: $property $duration $timing-function;
+}

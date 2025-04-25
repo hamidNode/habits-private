@@ -1,0 +1,38 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: none;
+
+  @include mixins.rounded(4px); // Add border radius
+  @include mixins.transition(
+    background-color
+  ); // Smooth transition effect
+
+  &--primary {
+    background-color: variables.$primary-sky-blue; // Add primary background color
+    color: variables.$secondary-dark-grey;
+    &:hover {
+      color: variables.$secondary-white; // White text
+      background-color: variables.$primary-deep-blue; // Darker blue on hover
+    }
+  }
+
+  &--secondary {
+    background-color: variables.$secondary-light-grey; // Light grey background
+    color: variables.$text-dark; // Dark text
+
+    &:hover {
+      background-color: variables.$text-light; // Slightly lighter hover color
+    }
+  }
+
+  &:disabled {
+    background-color: variables.$secondary-light-grey; // Disabled button styling
+    color: variables.$text-dark; // Text color remains readable
+    cursor: not-allowed; // Indicate it's disabled
+  }
+}

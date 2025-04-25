@@ -1,0 +1,50 @@
+@use "../base/variables";
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to bottom,
+    variables.$secondary-white,
+    variables.$primary-light-blue
+  );
+
+  &__body {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    min-height: 80vh;
+  }
+
+  &__main {
+    flex: 3;
+    padding: 2rem;
+    height: 100%;
+  }
+
+  &__sidebar {
+    flex: 1;
+    padding: 1rem;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  // Shared Media Queries
+  @media (max-width: 768px) {
+    &__content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    &__main {
+      flex: unset;
+      padding: 1rem;
+    }
+    &__sidebar {
+      flex: unset;
+    }
+  }
+}

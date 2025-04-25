@@ -1,0 +1,77 @@
+@use "../base/variables";
+@use "../base/mixins";
+
+.login {
+  text-align: center;
+  padding: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: variables.$primary-deep-blue;
+  }
+
+  .form-element {
+    max-width: 400px;
+    margin: 0 auto;
+
+    label {
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      margin-bottom: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%; // Full-width button for better usability
+    }
+  }
+
+  &-sidebar {
+    background-color: variables.$background-light;
+    padding: 1.5rem;
+    border: 1px solid variables.$border-light;
+    @include mixins.rounded(8px);
+
+    h2 {
+      font-size: 1.5rem;
+      color: variables.$primary-deep-blue;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          color: variables.$hover-blue;
+          text-decoration: none;
+
+          &:hover {
+            color: variables.$primary-deep-blue;
+          }
+        }
+      }
+    }
+
+    .tips {
+      h3 {
+        font-size: 1.2rem;
+        color: variables.$primary-light-blue;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: variables.$text-dark;
+        line-height: 1.5;
+      }
+    }
+  }
+}

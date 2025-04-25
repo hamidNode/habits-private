@@ -1,7 +1,9 @@
 //
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const app = require("./app");
+
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import app from "./app.js";
+
 dotenv.config({ path: "./config.env" });
 
 const DB = process.env.DATABASE.replace(
@@ -10,7 +12,7 @@ const DB = process.env.DATABASE.replace(
 );
 
 mongoose
-  .connect(DB, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(DB, {})
   .then(() => console.log("Connected to MongoDB!"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
 
